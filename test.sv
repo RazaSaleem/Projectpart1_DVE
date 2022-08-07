@@ -11,7 +11,7 @@ program test(dut_if vif);
     env = new(vif, 5);
     
     
-   // env.gen.total_trans = 5;
+   
     
     //initiate the stimulus by calling run of env
     env.run();
