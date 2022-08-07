@@ -68,15 +68,14 @@ class environment;
   
   //post_test methods
   task post_test();
-    //$display("before trigger___---Post test");
+   
     wait(gen.ended.triggered);
     wait(driv.drv_ended.triggered);
     wait(mon.mon_ended.triggered);
     wait(scb.scb_ended.triggered);
    
     $display("Saleem");
-   //wait(gen.total_trans == driv.total_trans);
-    //wait(gen.total_trans == scb.total_trans);
+  
   endtask
     
   //run methods
@@ -88,5 +87,3 @@ class environment;
   endtask
   
 endclass
-
-
