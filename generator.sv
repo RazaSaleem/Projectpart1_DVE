@@ -31,7 +31,7 @@ class generator;
       trans = new();
       if(!trans.randomize()) $display ("GEN: transaction randomize failed");
       gen2driv.put(trans);
-      //$display("1=%d    ------ 2=%d" , trans.HADDR, trans.HWDATA);
+      trans.display();
     end
       -> ended;
    
