@@ -25,8 +25,6 @@ class scoreboard;
       begin
      
         mon2scb.get(trans);
-        //$display("---------Scoreboard----------main ------------\n");
-        //$display("Address: %0h Data: %0h", trans.HADDR, trans.HWDATA);
         if(trans.HWRITE==1)
           mem[trans.HADDR]=trans.HWDATA;
         else
