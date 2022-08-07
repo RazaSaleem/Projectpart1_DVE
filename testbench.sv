@@ -13,21 +13,21 @@
 module testbench_top;
   
   //declare clock and reset signal
-  bit		clk = 0;
-  logic		reset;
+  bit		hclk = 0;
+  logic		hresetn;
 
   //clock generation
-  always #5 clk = ~clk;
+  always #5 hclk = ~hclk;
     
   
   //reset generation
   initial begin
-    reset = 0;
-    #5 reset = 1;
+    hresetn = 0;
+    #5 hresetn = 1;
   end
 
   //interface instance, inorder to connect DUT and testcase
-  dut_if	vif(clk, reset);
+  dut_if	vif(hclk, hresetn);
 
   //testcase instance, interface handle is passed to test as an argument
   test t1(vif);
