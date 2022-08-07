@@ -46,10 +46,11 @@ class monitor;
       signals(trans);
       @(posedge mem_vif.HCLK);
      
-     // $display("Address: %0h Data: %0h", mem_vif.monitor_cb.HADDR, mem_vif.monitor_cb.HWDATA);
       mon2scb.put(trans);
+       //trans.display();
       
-     //$display("Address: %0h Data: %0h", trans.HADDR, trans.HWDATA);
+      
+   
     end
     ->mon_ended;
     
