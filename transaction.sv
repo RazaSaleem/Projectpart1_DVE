@@ -27,17 +27,17 @@ class transaction;
   
   constraint CON_C1 {
     
-    HWDATA inside {[0:150]};
-    HSIZE inside {3'b010};  //HSIZE must be less than or equal to width of data bus
-    HTRANS inside { 2'b10}; //IDLE = 10 , BUSY = 10 , NONSEQ = 80 , SEQ
-    HPROT inside {4'b0001}; //protection signal for data access only
+    HWDATA inside {[0:256]};
     HBURST inside {3'b000};
+    HSIZE inside {3'b010};  //HSIZE must be less than or equal to width of data bus
+    HTRANS dist {2'b00:=10, 2'b01:=10, 2'b10:=80}; //IDLE = 10 , BUSY = 10 , NONSEQ = 80 
+    HPROT inside {4'b0001}; //protection signal for data access only
     HSEL inside {1'b1}; // Because we have only one slave
     HADDR inside {[0:255]}; //since slave memory range is 0x0-0x255
-  
+    //error inside {0};
+ 
   }
-  constraint c2 {if (HSIZE == 1) HADDR % 2 ==0;
-                 else if (HSIZE == 2) HADDR % 4 ==0;}
+  constraint Alian { HADDR [1:0] inside {0};}
 
   //Add print transaction method(optional)
   
