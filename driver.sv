@@ -37,8 +37,10 @@ class driver;
     mem_vif.driver_cb.HWRITE 	   <= 1;
     mem_vif.driver_cb.error	   <=0;
   //	mem_vif.HREADY 	   <= 1;
+    mem_vif.driver_cb.HSEL	   <=1;
     
     wait(mem_vif.HRESETn);
+     mem_vif.driver_cb.HWRITE 	   <= 0;
     $display("-----[DRIVER]------- Reset");
   endtask
   
@@ -67,9 +69,11 @@ class driver;
     
         @(posedge mem_vif.HCLK);
         mem_vif.driver_cb.HWRITE 	   <= 0;
+        trans.display();
 
         
-       $display("Address: %0h Data: %0h", mem_vif.driver_cb.HADDR, mem_vif.driver_cb.HWDATA);
+       //$display("Address: %0h Data: %0h", mem_vif.driver_cb.HADDR, mem_vif.driver_cb.HWDATA);
+        
         end
     ->drv_ended;
      
